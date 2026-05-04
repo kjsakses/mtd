@@ -1,8 +1,60 @@
 <html>
   <head>
     <base target="_top">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      html, body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden; /* Mencegah scroll ganda pada body */
+      }
+      
+      .iframe-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: auto; /* Scroll hanya di container jika diperlukan */
+        -webkit-overflow-scrolling: touch; /* Scroll halus di iOS */
+      }
+      
+      iframe {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+      
+      /* Fallback untuk ukuran layar sangat kecil */
+      @media (max-width: 480px) {
+        .iframe-container {
+          -webkit-overflow-scrolling: touch;
+        }
+      }
+      
+      /* Landscape mode di handphone */
+      @media (max-height: 480px) and (orientation: landscape) {
+        .iframe-container {
+          overflow-y: auto;
+        }
+      }
+    </style>
   </head>
   <body>
-    <iframe width="100%" height="100%" src="https://script.google.com/macros/s/AKfycbxUnsEKRpSALUEW2u2b_kHtYjT7fCAV5rOrvjXXSsM-iWDIyRnhfgNsxTiVrqQwDHkR1g/exec" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+    <div class="iframe-container">
+      <iframe 
+        src="https://script.google.com/macros/s/AKfycbxUnsEKRpSALUEW2u2b_kHtYjT7fCAV5rOrvjXXSsM-iWDIyRnhfgNsxTiVrqQwDHkR1g/exec" 
+        frameborder="0" 
+        style="border:0" 
+        allowfullscreen 
+        sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+        title="Google Apps Script">
+      </iframe>
+    </div>
   </body>
 </html>
